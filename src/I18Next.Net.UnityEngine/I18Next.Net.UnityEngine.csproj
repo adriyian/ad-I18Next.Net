@@ -8,7 +8,7 @@
         <Version>0.7.1</Version>
         <Authors>DarkLiKally</Authors>
         <RepositoryType>git</RepositoryType>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

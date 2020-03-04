@@ -59,12 +59,14 @@ namespace I18Next.Net.Backends
 
         private string FindFile(string language, string @namespace)
         {
-            var path = Path.Combine(_basePath, language, @namespace + ".xml");
+            //var path = Path.Combine(_basePath, language, @namespace + ".xml");
+            var path = Path.Combine(_basePath, language + ".xml");
 
             if (File.Exists(path))
                 return path;
 
-            path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language), @namespace + ".xml");
+            //path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language), @namespace + ".xml");
+            path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language) + ".xml");
 
             return !File.Exists(path) ? null : path;
         }

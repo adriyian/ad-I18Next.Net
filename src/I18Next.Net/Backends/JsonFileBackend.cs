@@ -59,12 +59,14 @@ namespace I18Next.Net.Backends
 
         private string FindFile(string language, string @namespace)
         {
-            var path = Path.Combine(_basePath, language, @namespace + ".json");
+            //var path = Path.Combine(_basePath, language, @namespace + ".json");
+            var path = Path.Combine(_basePath, language + ".json");
 
             if (File.Exists(path))
                 return path;
 
-            path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language), @namespace + ".json");
+            //path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language), @namespace + ".json");
+            path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language) + ".json");
 
             return !File.Exists(path) ? null : path;
         }

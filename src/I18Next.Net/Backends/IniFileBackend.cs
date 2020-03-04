@@ -59,12 +59,14 @@ namespace I18Next.Net.Backends
 
         private string FindFile(string language, string @namespace)
         {
-            var path = Path.Combine(_basePath, language, @namespace + ".ini");
+            //var path = Path.Combine(_basePath, language, @namespace + ".ini");
+            var path = Path.Combine(_basePath, language + ".ini");
 
             if (File.Exists(path))
                 return path;
 
-            path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language), @namespace + ".ini");
+            //path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language), @namespace + ".ini");
+            path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language) + ".ini");
 
             return !File.Exists(path) ? null : path;
         }

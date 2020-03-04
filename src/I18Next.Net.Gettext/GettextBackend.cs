@@ -95,12 +95,14 @@ namespace I18Next.Net.Gettext
 
         private string FindFile(string language, string @namespace)
         {
-            var path = Path.Combine(_basePath, language, @namespace + ".mo");
+            //var path = Path.Combine(_basePath, language, @namespace + ".mo");
+            var path = Path.Combine(_basePath, language + ".mo");
 
             if (File.Exists(path))
                 return path;
 
-            path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language), @namespace + ".mo");
+            //path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language), @namespace + ".mo");
+            path = Path.Combine(_basePath, BackendUtilities.GetLanguagePart(language) + ".mo");
 
             return !File.Exists(path) ? null : path;
         }

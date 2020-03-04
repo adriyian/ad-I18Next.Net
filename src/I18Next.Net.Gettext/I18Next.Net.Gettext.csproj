@@ -9,7 +9,7 @@
         <RepositoryType>git</RepositoryType>
         <Product>I18Next.Net</Product>
         <Version>0.7.1</Version>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
