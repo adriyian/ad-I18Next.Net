@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using I18Next.Net.Backends;
 
 namespace Example.WebApp
 {
@@ -29,12 +30,11 @@ namespace Example.WebApp
             app.UseRequestLocalization(options => options.AddSupportedCultures("de", "en"));
 
             app.UseStaticFiles();
+            app.UseRouting();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    "default",
-                    "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
 
@@ -42,14 +42,14 @@ namespace Example.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             // Option 1: Simple setup for AspNetCore using the default configuration
-            services.AddI18NextLocalization(i18N => i18N.IntegrateToAspNetCore());
+            //services.AddI18NextLocalization(i18N => i18N.IntegrateToAspNetCore());
 
             // Option 2: Customize the locales location in order to use the same json files on the client side. 
-            // services.AddI18NextLocalization(i18n =>
-            // {
-            //     i18n.IntegrateToAspNetCore()
-            //         .AddBackend(new JsonFileBackend("wwwroot/locales"));
-            // });
+            services.AddI18NextLocalization(i18n =>
+            {
+                i18n.IntegrateToAspNetCore()
+                    .AddBackend(new JsonFileBackend("wwwroot/locales"));
+            });
 
             services.AddMvc()
                 // Enable view localization and register required I18Next services
